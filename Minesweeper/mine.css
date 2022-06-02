@@ -1,0 +1,40 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+div.column {
+    float: left;
+}
+
+
+
+table, tr, th, td {
+    text-align: center;
+    margin: 2px;
+    border: 1px solid #C0C0C0;
+}
+
+div#game-view {
+    margin: 2px;
+    padding: 1px;
+    border: 1px solid #C0C0C0;
+}
+
+th {
+    color: #0000C0;
+    background-color: #F0F0FF;
+}
+
+input.setup {
+    width: 60px;
+}
+
+button {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+button.control {
+    width: 100%;
+}

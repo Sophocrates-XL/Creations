@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <title>Mine</title>
+    <link rel="stylesheet" href="mine.css" />
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+
+
+
+<body>
+    <div class="row" id="app">
+        <div class="column" id="setup-section" width="150px">
+            <table id="setup">
+                <tr>
+                    <th colspan="2">Game Setup</th>
+                </tr>
+                <tr>
+                    <td><b>Row No.</b></td>
+                    <td><input v-model="n_row" class="setup" type="number" step="1" /></td>
+                </tr>
+                <tr>
+                    <td><b>Column No.</b></td>
+                    <td><input v-model="n_col" class="setup" type="number" step="1" /></td>
+                </tr>
+                <tr>
+                    <td><b>Mine No.</b></td>
+                    <td><input v-model="n_mine" class="setup" type="number" step="1" /></td>
+                </tr>
+                <tr>
+                    <th colspan="2">Game Control</th>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="control" v-on:click="reset_game()">Reset Game</button></td>
+                </tr>
+                <tr>
+                    <th colspan="2">Game State</th>
+                </tr>
+                <!--
+                <tr>
+                    <td><b>Time Elapsed</b></td>
+                    <td v-model="get_elapsed_time()"></td>
+                </tr>
+                -->
+                <tr>
+                    <td><b>Mines Left</b></td>
+                    <td>{{ game_controller.get_n_mine_left() }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="column" id="game-view" width="80%">
+            <template v-for="cells in game_controller.cell_matrix">
+                <template v-for="cell in cells">
+                    <img
+                    v-bind:src="cell.get_src()"
+                    v-on:mouseenter="cell.on_mouseenter()"
+                    v-on:mouseleave="cell.on_mouseleave()"
+                    v-on:click.left="cell.on_click_left()"
+                    v-on:click.right.prevent="cell.on_click_right()"/>
+                </template>
+                <br />
+            </template>
+        </div>
+        <!--
+        <div class="column" id="control-section">
+            <table>
+                <tr>
+                    <th>Property</th><th>Status</th>
+                </tr>
+                <template v-for="(val, attr) in statistics">
+                    <tr>
+                        <td><b>{{attr}}</b></td><td>{{val}}</td>
+                    </tr>
+
+
+                </template>
+            </table>
+
+
+        </div>
+    -->
+
+    </div>
+</body>
+
+
+
+
+
+<script src="models.js"></script>
+<script src="mine.js"></script>
+</html>
